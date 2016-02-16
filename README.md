@@ -4,7 +4,7 @@
 
 Submitted by: **Khoa Bui**
 
-Time spent: 30 hours spent in total
+Time spent: About 30 hours spent in total
 
 ## User Stories
 
@@ -39,11 +39,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Challenges encountered while building the app:
 * Had some issues running the 'app' with other APIs besides API 23
-* Figuring out how to use Intent and Extras took a large amount of time
+* Figuring out how to use Intent and Extras took quite some time
 
 ## License
 
-    Copyright 2015 Khoa Bui
+    Copyright 2016 Khoa Bui
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
