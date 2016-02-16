@@ -4,7 +4,7 @@
 
 Submitted by: **Khoa Bui**
 
-Time spent: About 30 hours spent in total
+Time spent: 15 hours
 
 ## User Stories
 
