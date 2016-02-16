@@ -37,7 +37,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Challenges encountered while building the app:
+* Had some issues running the 'app' with other APIs besides API 23
+* Figuring out how to use Intent and Extras took a large amount of time
 
 ## License
 
