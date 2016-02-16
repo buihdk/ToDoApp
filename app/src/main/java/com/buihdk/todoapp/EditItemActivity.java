@@ -19,11 +19,10 @@ public class EditItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_item);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Do something else instead?");
+        toolbar.setTitle("Change Your Mind?");
         toolbar.setBackgroundColor(Color.BLACK);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         edited_item = getIntent().getStringExtra("item_for_editing");
         etEdit = (EditText) findViewById(R.id.etEdit);
