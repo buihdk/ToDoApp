@@ -4,7 +4,7 @@
 
 Submitted by: **Khoa Bui**
 
-Time spent: 20 hours
+Time spent: 22 hours
 
 ## User Stories
 
@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 * [ ] Add support for completion due dates for todo items (and display within listview item)
 * [ ] Use a [DialogFragment](http://guides.codepath.com/android/Using-DialogFragment) instead of new Activity for editing items
 * [ ] Add support for selecting the priority of each todo item (and display in listview item)
-* [ ] Tweak the style improving the UI / UX, play with colors, images or backgrounds
+* [x] Tweak the style improving the UI / UX, play with colors, images or backgrounds
 
 The following **additional** features are implemented:
 
@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/aOOHWDT.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/NhmkrfK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -43,7 +43,7 @@ Challenges encountered while building the app:
 
 ## License
 
-    Copyright (C) 2016 Khoa Bui
+    Copyright (c) 2016 Khoa Bui
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

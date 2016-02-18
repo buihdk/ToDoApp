@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         lvItems = (ListView) findViewById(R.id.lvItems);
         etEditText = (EditText) findViewById(R.id.etEditText);
 
-        // toolbar
+        // set up toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // add icon to toolbar

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/background"
     tools:context="com.buihdk.todoapp.EditItemActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -17,6 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:theme="@style/ToolbarTheme"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:clickable="false" />
 
