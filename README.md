@@ -38,7 +38,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Challenges encountered while building the app:
-* Had some issues running the 'app' with other APIs besides API 23 (Update: The issue was caused because of readItems() statement when the app initially tried to read the list of items in the text file for populating them in the app. This issue is now fixed with SQLite added)
+* Had some issues running the 'app' with other APIs besides API 23 (Update: The issue was generated because of the readItems() statement in onCreate method when the app initially tried to read the list of items in the text file. The issue is now fixed with SQLite added)
 * Figuring out how to use Intent and Extras took quite some time
 
 ## License
