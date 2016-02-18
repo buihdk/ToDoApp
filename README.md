@@ -4,7 +4,7 @@
 
 Submitted by: **Khoa Bui**
 
-Time spent: 15 hours
+Time spent: 20 hours
 
 ## User Stories
 
@@ -16,7 +16,7 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-* [ ] Persist the todo items [into SQLite](http://guides.codepath.com/android/Persisting-Data-to-the-Device#sqlite) instead of a text file
+* [x] Persist the todo items [into SQLite](http://guides.codepath.com/android/Persisting-Data-to-the-Device#sqlite) instead of a text file
 * [ ] Improve style of the todo items in the list [using a custom adapter](http://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView)
 * [ ] Add support for completion due dates for todo items (and display within listview item)
 * [ ] Use a [DialogFragment](http://guides.codepath.com/android/Using-DialogFragment) instead of new Activity for editing items
@@ -38,7 +38,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Challenges encountered while building the app:
-* Had some issues running the 'app' with other APIs besides API 23
+* Had some issues running the 'app' with other APIs besides API 23 (Update: The issue was caused because of readItems() statement when the app initially tried to read the list of items in the text file for populating them in the app. This issue is now fixed with SQLite added)
 * Figuring out how to use Intent and Extras took quite some time
 
 ## License

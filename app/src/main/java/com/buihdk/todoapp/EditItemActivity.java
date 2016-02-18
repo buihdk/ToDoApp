@@ -23,7 +23,7 @@ public class EditItemActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        edited_item = getIntent().getStringExtra("item_for_editing");
+        edited_item = getIntent().getStringExtra("editing_item");
         etEdit = (EditText) findViewById(R.id.etEdit);
         etEdit.setText(edited_item);
         etEdit.requestFocus();

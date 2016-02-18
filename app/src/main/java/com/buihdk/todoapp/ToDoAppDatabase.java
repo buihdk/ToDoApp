@@ -12,11 +12,10 @@ import java.util.ArrayList;
 public class ToDoAppDatabase extends SQLiteOpenHelper {
     // Database Info
     private static final String DATABASE_NAME = "ToDoList.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 1;
     // Table Names
     private static final String TABLE_ITEMS = "items";
     // Items Table Column(s)
-    private static final String KEY_POSITION = "position";
     private static final String KEY_ITEM = "item";
 
     public ToDoAppDatabase(Context context) {
@@ -27,7 +26,7 @@ public class ToDoAppDatabase extends SQLiteOpenHelper {
        If a database already exists on disk with the same DATABASE_NAME, this method will NOT be called. */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_ITEMS + "(" + KEY_POSITION + " INTEGER, " + KEY_ITEM + " TEXT" + ")");
+        db.execSQL("CREATE TABLE " + TABLE_ITEMS + "(" + KEY_ITEM + " TEXT" + ")");
     }
 
     /* Called when the database needs to be upgraded.
@@ -42,33 +41,25 @@ public class ToDoAppDatabase extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor readItems() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery("SELECT " + KEY_ITEM + " FROM " + TABLE_ITEMS, null);
-        return res;
-    }
-
-    public boolean insertItems(int position, String item) {
+    public boolean insertItems(String item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(KEY_POSITION, position);
         contentValues.put(KEY_ITEM, item);
         db.insert(TABLE_ITEMS, null, contentValues);
         return true;
     }
 
-    public boolean updateItems(int position, String item) {
+    public boolean updateItems(String old_item, String new_item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(KEY_POSITION, position);
-        contentValues.put(KEY_ITEM, item);
-        db.update(TABLE_ITEMS, contentValues, KEY_POSITION + " = ?", new String[]{Integer.toString(position)});
+        contentValues.put(KEY_ITEM, new_item);
+        db.update(TABLE_ITEMS, contentValues, KEY_ITEM + " = ?", new String[]{old_item}); // for int var: Integer.toString(var)
         return true;
     }
 
-    public boolean deleteItems(int position) {
+    public boolean deleteItems(String item) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_ITEMS,KEY_POSITION + " = ?", new String[]{Integer.toString(position)});
+        db.delete(TABLE_ITEMS, KEY_ITEM + " = ?", new String[]{item});
         return true;
     }
 
@@ -80,10 +71,11 @@ public class ToDoAppDatabase extends SQLiteOpenHelper {
         Cursor res =  db.rawQuery("SELECT " + KEY_ITEM + " FROM " + TABLE_ITEMS, null );
         res.moveToFirst();
 
-        while(res.moveToNext()){
+        while(!res.isAfterLast()) {
             todoItems.add(res.getString(res.getColumnIndex(KEY_ITEM)));
-            ;
+            res.moveToNext();
         }
+
         return todoItems;
     }
 }

@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,12 +19,14 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> todoItems;
     ArrayAdapter<String> aToDoAdapter;
+
     ListView lvItems;
     EditText etEditText;
     String new_item;
+    String editing_item;
     String edited_item;
-    int index_new; // position of a new item in the array list
-    int index_edit; // position of an item being edited in the array list
+
+    int index; // position of an item being edited in the array list
     private final int REQUEST_CODE = 20; // request code can be any value, used to determine the result type later
     private ToDoAppDatabase db;
 
@@ -58,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
         lvItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                db.deleteItems(todoItems.get(position)); //writeItems();
                 todoItems.remove(position);
                 aToDoAdapter.notifyDataSetChanged();
-                //writeItems();
-                db.deleteItems(position);
-                Toast.makeText(MainActivity.this, String.valueOf(position)+ " " + String.valueOf(id), Toast.LENGTH_SHORT).show();
+                //Log.d("MainActivity","position"+position);
+                //Toast.makeText(MainActivity.this, String.valueOf(position)+ " " + String.valueOf(id), Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -71,14 +72,22 @@ public class MainActivity extends AppCompatActivity {
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                index_edit = position; // Store the position of the edited item which will be used in onActivityResult() method
+                index = position; // Store the position of the edited item which will be used in onActivityResult() method
                 Intent i = new Intent(MainActivity.this, EditItemActivity.class);
+                editing_item = todoItems.get(position);
                 // put "extra" into the bundle for access in the EditItemActivity
-                i.putExtra("item_for_editing",todoItems.get(position));
+                i.putExtra("editing_item",todoItems.get(position));
                 // open child activity whose result can be retrieved to the parent activity
                 startActivityForResult(i, REQUEST_CODE);
             }
         });
+    }
+
+    public void onAddItem(View view) {
+        new_item = etEditText.getText().toString();
+        db.insertItems(new_item); //writeItems();
+        aToDoAdapter.add(new_item);
+        etEditText.setText("");
     }
 
     @Override
@@ -86,11 +95,9 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             // Extract edited item's value from extra
             edited_item = data.getExtras().getString("edited_item");
-            todoItems.set(index_edit, edited_item);
+            db.updateItems(editing_item, edited_item); //writeItems();
+            todoItems.set(index, edited_item);
             aToDoAdapter.notifyDataSetChanged();
-            //writeItems();
-            db.updateItems(index_edit, edited_item);
-            Toast.makeText(this, String.valueOf(index_edit), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -107,12 +114,10 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -125,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 //    }
-//
 //    private void writeItems() {
 //        File filesDir = getFilesDir(); // get specific directory for read/write access
 //        File file = new File(filesDir, "todo.txt"); // instantiate a file type to write file in the specific dir
@@ -135,16 +139,5 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 //    }
-
-    public void onAddItem(View view) {
-        new_item = etEditText.getText().toString();
-        aToDoAdapter.add(new_item);
-        index_new = aToDoAdapter.getPosition(new_item);
-        long id_new = aToDoAdapter.getItemId(index_new);
-        etEditText.setText("");
-        //writeItems();
-        db.insertItems(index_new, new_item);
-        Toast.makeText(this, String.valueOf(index_new)+ " " + String.valueOf(id_new), Toast.LENGTH_SHORT).show();
-    }
 
 }
