@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         // show list of items
         //readItems();
         todoItems = new ArrayList<String>(db.todoItems());
-        aToDoAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, todoItems);
-        lvItems.setAdapter(aToDoAdapter);
+        aToDoAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, todoItems); // initialize ArrayAdapter
+        lvItems.setAdapter(aToDoAdapter); // connect adapter to a list view
 
         // remove item by long click
         lvItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
