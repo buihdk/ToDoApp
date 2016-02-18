@@ -39,7 +39,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Challenges encountered while building the app:
 * Had some issues running the 'app' with other APIs besides API 23 
+    
     Update: The issue was generated due to the readItems() statement in onCreate method when the app initially tried to read the list of items in a text file that didn't exist. The issue is now fixed after the implementation of SQLite.
+    
 * Figuring out how to use Intent and Extras took quite some time
 * Picking the right color combinations that can go well with the background image was hard
 
