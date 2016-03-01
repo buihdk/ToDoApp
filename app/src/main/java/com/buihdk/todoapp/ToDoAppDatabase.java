@@ -66,16 +66,17 @@ public class ToDoAppDatabase extends SQLiteOpenHelper {
     public ArrayList<String> todoItems()
     {
         ArrayList<String> todoItems = new ArrayList<String>();
-
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery("SELECT " + KEY_ITEM + " FROM " + TABLE_ITEMS, null );
-        res.moveToFirst();
-
-        while(!res.isAfterLast()) {
-            todoItems.add(res.getString(res.getColumnIndex(KEY_ITEM)));
-            res.moveToNext();
+        Cursor cur =  db.rawQuery("SELECT " + KEY_ITEM + " FROM " + TABLE_ITEMS, null);
+        try {
+            cur.moveToFirst();
+            while(!cur.isAfterLast()) {
+                todoItems.add(cur.getString(cur.getColumnIndex(KEY_ITEM)));
+                cur.moveToNext();
+            }
+        } finally {
+            cur.close();
         }
-
         return todoItems;
     }
 }

@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -81,18 +82,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(i, REQUEST_CODE);
             }
         });
-    }
 
-    public void onAddItem(View view) {
-        new_item = etEditText.getText().toString();
-        new_item = new_item.trim();
-        if (new_item.matches("")) {
-            Toast.makeText(this, "Item cannot be blank!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        db.insertItems(new_item); //writeItems();
-        aToDoAdapter.add(new_item);
-        etEditText.setText("");
+        Button btnAddItem = (Button) findViewById(R.id.btnAddItem);
+        btnAddItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new_item = etEditText.getText().toString();
+                new_item = new_item.trim();
+                if (new_item.matches("")) {
+                    Toast.makeText(MainActivity.this, "Item cannot be blank!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                db.insertItems(new_item); //writeItems();
+                aToDoAdapter.add(new_item);
+                etEditText.setText("");
+            }
+        });
     }
 
     @Override
@@ -113,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
+
 }
 
 
