@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:src="@drawable/ic_check_circle_24dp"
+        android:tint="@color/actionMenuTextColor"
+        android:layout_width="14dp"
+        android:layout_height="14dp" />
+
+    <TextView
+        android:id="@+id/tvItemName"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:text="@string/item_name"
+        android:paddingLeft="4dp" />
+
+
+    <TextView
+        android:id="@+id/tvDueDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/due_date"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</LinearLayout>

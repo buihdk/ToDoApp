@@ -28,8 +28,8 @@
         android:id="@+id/lvItems"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/btnAddItem"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/tvDueDate" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -40,4 +40,24 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:hint="@string/add_item" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/date_display"
+        android:id="@+id/tvDueDate"
+        android:layout_above="@+id/etEditText"
+        android:layout_toRightOf="@+id/tvDateStr"
+        android:layout_toEndOf="@+id/tvDateStr" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Due Date: "
+        android:id="@+id/tvDateStr"
+        android:layout_alignTop="@+id/tvDueDate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

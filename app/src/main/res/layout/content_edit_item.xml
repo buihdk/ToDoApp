@@ -40,6 +40,16 @@
         android:id="@+id/btnSaveItem"
         android:layout_below="@+id/etEdit"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp" />
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/date_display"
+        android:id="@+id/tvEditDate"
+        android:layout_above="@+id/btnSaveItem"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

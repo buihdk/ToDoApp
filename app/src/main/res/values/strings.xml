@@ -5,5 +5,9 @@
     <string name="add_item">Add a new item...</string>
     <string name="title_activity_edit_item">Change Your Mind?</string>
     <string name="save">Save</string>
-    <string name="edit_item">Edit Item Below:</string>
+    <string name="edit_item">Edit Item Below: </string>
+    <string name="item_name">Item Name</string>
+    <string name="due_date">Due Date</string>
+    <string name="date_display">01/01/0001</string>
+
 </resources>
